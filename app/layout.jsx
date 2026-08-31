@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata = {
   title: {
-    default: `${siteConfig.name} | Printer Drivers & Hardware Guides`,
+    default: `${siteConfig.name} | Printer Drivers & Hardware Troubleshooting`,
     template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
@@ -34,7 +34,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-[#0b1120] text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
         <Header />
         <main className="flex-1 w-full">
           {children}

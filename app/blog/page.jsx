@@ -45,14 +45,14 @@ export default function BlogPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
       <Breadcrumbs items={[{ label: "Blog" }]} />
 
-      <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-blue-950/40 border border-slate-800 rounded-3xl p-8 sm:p-10">
-        <div className="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
+      <div className="bg-gradient-to-r from-blue-50 via-white to-indigo-50 border border-blue-200 rounded-3xl p-8 sm:p-10 shadow-xs">
+        <div className="w-12 h-12 rounded-xl bg-blue-100 border border-blue-200 flex items-center justify-center text-blue-600 mb-4">
           <BookOpenIcon className="w-6 h-6" />
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
           Driver Info Hub Editorial &amp; Blog
         </h1>
-        <p className="text-slate-300 text-base sm:text-lg mt-3 max-w-3xl leading-relaxed">
+        <p className="text-slate-600 text-base sm:text-lg mt-3 max-w-3xl leading-relaxed">
           Deep-dive technical investigations, hardware troubleshooting walkthroughs, and clear guides for everyday computer users and IT professionals.
         </p>
       </div>
@@ -61,28 +61,28 @@ export default function BlogPage() {
         {allBlogPosts.map((post) => (
           <article
             key={post.slug}
-            className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-900 transition-all group"
+            className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-300 hover:shadow-lg transition-all group"
           >
             <div>
               <div className="flex items-center justify-between text-xs mb-3">
-                <span className="px-2.5 py-0.5 rounded-full font-medium bg-blue-950 text-blue-300 border border-blue-800/40">
+                <span className="px-2.5 py-0.5 rounded-full font-bold bg-blue-50 text-blue-700 border border-blue-200">
                   {post.category}
                 </span>
-                <span className="text-slate-400">{post.readTime}</span>
+                <span className="text-slate-500 font-medium">{post.readTime}</span>
               </div>
 
-              <h2 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
+              <h2 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                 <Link href={`/blog/${post.slug}`}>
                   {post.title}
                 </Link>
               </h2>
 
-              <p className="text-slate-400 text-sm mt-3 leading-relaxed">
+              <p className="text-slate-600 text-sm mt-3 leading-relaxed">
                 {post.excerpt}
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-400">
+            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
               <span>By {post.author}</span>
               <span>{post.date}</span>
             </div>
