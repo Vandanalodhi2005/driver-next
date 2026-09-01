@@ -4,8 +4,8 @@
   --background: #f8fafc;
   --foreground: #0f172a;
   --card-bg: #ffffff;
-  --primary-accent: #2563eb;
-  --primary-blue: #1d4ed8;
+  --primary-accent: #0288d1;
+  --primary-blue: #0354ff;
   --border-subtle: #e2e8f0;
 }
 
@@ -42,3 +42,23 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
