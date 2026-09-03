@@ -1,195 +1,322 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { siteConfig } from "@/lib/site-config";
-import { MailIcon, MapPinIcon, BuildingIcon, CheckCircleIcon } from "@/components/Icons";
+import ContactForm from "./ContactForm";
+import {
+  MailIcon,
+  ShieldCheckIcon,
+  CheckCircleIcon,
+  InfoIcon,
+  HelpCircleIcon,
+  ArrowRightIcon,
+  MessageCircleIcon,
+  BookOpenIcon,
+} from "@/components/Icons";
+
+export const metadata = {
+  title: "Get in Touch | Contact Us – Driver Info Hub",
+  description:
+    "Have a question, topic suggestion, or content feedback? Contact the Driver Info Hub editorial team. We read every message and use your feedback to improve our guides.",
+};
+
+const directChannels = [
+  {
+    icon: <MailIcon className="w-5 h-5" />,
+    label: "Email Us",
+    value: "support@driverinfohub.com",
+    href: "mailto:support@driverinfohub.com",
+    color: "text-[#024ad8]",
+    bg: "bg-blue-50 border-blue-100",
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    label: "Response Time",
+    value: "2–3 working days",
+    href: null,
+    color: "text-cyan-700",
+    bg: "bg-cyan-50 border-cyan-100",
+  },
+  {
+    icon: <ShieldCheckIcon className="w-5 h-5" />,
+    label: "Privacy",
+    value: "We never share your details",
+    href: null,
+    color: "text-emerald-700",
+    bg: "bg-emerald-50 border-emerald-100",
+  },
+];
+
+const faqs = [
+  {
+    emoji: "💻",
+    q: "Can you fix my PC remotely?",
+    a: "No, we are an educational publisher. We provide guides and point you to official sources.",
+  },
+  {
+    emoji: "📝",
+    q: "Will you cover my suggestion?",
+    a: "Very likely! Many of our articles start as reader questions. Tell us what you need.",
+  },
+  {
+    emoji: "🔒",
+    q: "Is my data safe?",
+    a: "Absolutely. We only use your information to reply to your inquiry. See our privacy policy for more.",
+  },
+];
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-      <Breadcrumbs items={[{ label: "Contact" }]} />
+    <main className="min-h-screen bg-slate-50 selection:bg-blue-900 selection:text-white">
 
-      <div className="bg-gradient-to-r from-blue-50 via-white to-indigo-50 border border-blue-200 rounded-3xl p-8 sm:p-10 shadow-xs">
-        <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 inline-block mb-3">
-          Get In Touch
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-          Contact Driver Info Hub
-        </h1>
-        <p className="text-slate-600 text-base sm:text-lg mt-3 max-w-2xl leading-relaxed">
-          {siteConfig.company.contactNote}
-        </p>
+      {/* ── Breadcrumb ── */}
+      <div className="border-b border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={[{ label: "Contact" }]} />
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* Contact Information Cards (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-6 shadow-xs">
-            <h2 className="text-xl font-bold text-slate-900">Direct Information</h2>
+      {/* ══════════════════════════════════════════════════════════════
+          SPLIT HERO — image left, headline right (editorial look) 
+          
+      ══════════════════════════════════════════════════════════════ */}
+      <section className="relative bg-[#024ad8] overflow-hidden min-h-[480px] lg:min-h-[560px]">
 
-            {/* Email */}
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shrink-0">
-                <MailIcon className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-blue-700 uppercase tracking-wider">
-                  EMAIL
-                </div>
-                <a
-                  href={`mailto:${siteConfig.company.email}`}
-                  className="text-base font-bold text-blue-600 hover:text-blue-700 transition-colors break-all"
+        {/* Left: large editorial image */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 z-0">
+          <Image
+            src="/images/driver-support.jpg"
+            alt="Driver Info Hub team at work"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Strong overlay so text reads on mobile */}
+          <div className="absolute inset-0 bg-blue-950/80 lg:bg-gradient-to-r lg:from-blue-950/60 lg:via-blue-950/40 lg:to-transparent" />
+        </div>
+
+        {/* Right: headline content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[480px] lg:min-h-[560px] flex items-center">
+          <div className="w-full lg:ml-auto lg:w-1/2 lg:pl-12 xl:pl-20 text-white py-16 sm:py-20">
+
+            {/* Eyebrow pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-white/90 text-xs font-bold uppercase tracking-widest backdrop-blur-sm mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+              </span>
+              Get in Touch
+            </div>
+
+            {/* Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-white max-w-lg">
+              Have a Question or{" "}
+              <em className="not-italic underline decoration-cyan-300/70 decoration-4 underline-offset-3">
+                Topic Idea?
+              </em>
+            </h1>
+
+            <p className="mt-5 text-white/80 text-base sm:text-lg leading-relaxed max-w-md">
+              We love hearing from our readers. Drop us a line below — we read every message and use your feedback to improve our guides.
+            </p>
+
+            {/* 3 stat chips */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {[
+                { icon: <CheckCircleIcon className="w-3.5 h-3.5" />, text: "Every message read" },
+                { icon: <ShieldCheckIcon className="w-3.5 h-3.5" />, text: "Data stays private" },
+                { icon: <MailIcon className="w-3.5 h-3.5" />, text: "2–3 day reply" },
+              ].map((b, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 border border-white/20 backdrop-blur-sm text-xs font-semibold text-white"
                 >
-                  {siteConfig.company.email}
-                </a>
-              </div>
+                  {b.icon} {b.text}
+                </span>
+              ))}
             </div>
+          </div>
+        </div>
 
-            {/* Address */}
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shrink-0">
-                <MapPinIcon className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-blue-700 uppercase tracking-wider">
-                  ADDRESS
-                </div>
-                <div className="text-slate-700 text-sm font-medium leading-relaxed">
-                  {siteConfig.company.address}
-                </div>
-              </div>
-            </div>
+        {/* Bottom decorative wave */}
+        <div className="absolute bottom-0 inset-x-0 z-20">
+          <svg viewBox="0 0 1440 40" fill="none" preserveAspectRatio="none" className="w-full h-10 text-slate-50" aria-hidden>
+            <path d="M0 40 C360 0 1080 0 1440 40 L1440 40 L0 40 Z" fill="currentColor" />
+          </svg>
+        </div>
+      </section>
 
-            {/* Company */}
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shrink-0">
-                <BuildingIcon className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-blue-700 uppercase tracking-wider">
-                  COMPANY
+      {/* ══════════════════════════════════════════════════════════════
+          MAIN BODY
+      ══════════════════════════════════════════════════════════════ */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1 pb-20 space-y-16 sm:space-y-24">
+
+        {/* ── Row 1: Form card + sidebar ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+          {/* FORM CARD */}
+          <div className="lg:col-span-7">
+            <div className="rounded-3xl bg-white shadow-2xl shadow-slate-300/40 overflow-hidden border border-slate-100">
+              {/* Coloured top bar */}
+              <div className="h-1.5 bg-gradient-to-r from-[#024ad8] via-cyan-400 to-indigo-500" />
+
+              <div className="p-7 sm:p-10">
+                {/* Header */}
+                <div className="flex items-start gap-4 mb-8">
+                  <div className="w-11 h-11 rounded-2xl bg-[#024ad8] flex items-center justify-center text-white shadow-md shadow-[#024ad8]/30 shrink-0">
+                    <MessageCircleIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-extrabold text-slate-950">
+                      Send a Message
+                    </h2>
+                    <p className="text-slate-500 text-sm mt-1 leading-snug">
+                      While we can&rsquo;t offer one-to-one technical support, we read every message and use your feedback to improve our guides.
+                    </p>
+                  </div>
                 </div>
-                <div className="text-slate-900 text-sm font-bold">
-                  {siteConfig.company.name}
-                </div>
+
+                <ContactForm />
               </div>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs text-slate-600 leading-relaxed">
-            <p>
-              We typically respond to editorial queries, correction requests, and hardware guide suggestions within 1–2 business days.
+          {/* SIDEBAR */}
+          <aside className="lg:col-span-5 space-y-6 lg:pt-0">
+
+            {/* About image card */}
+            <div className="rounded-3xl overflow-hidden relative bg-slate-950 shadow-xl shadow-slate-300/30 aspect-[4/3] border border-slate-200">
+              <Image
+                src="/images/about-team.jpg"
+                alt="The Driver Info Hub editorial team"
+                fill
+                sizes="(max-width: 1024px) 100vw, 420px"
+                className="object-cover object-center opacity-75"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+              <div className="absolute inset-0 p-7 flex flex-col justify-end">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 mb-1">
+                  Independent Editorial Team
+                </span>
+                <h3 className="text-lg font-extrabold text-white leading-snug">
+                  Real People.<br />Genuine Feedback Loop.
+                </h3>
+                <p className="text-slate-300 text-xs mt-1.5 leading-relaxed">
+                  Your messages directly shape which guides we write next.
+                </p>
+              </div>
+            </div>
+
+            {/* Direct contact card */}
+            <div className="rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/40 p-7 space-y-4">
+              <h3 className="text-sm font-extrabold text-slate-950 uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span className="w-1 h-4 rounded-full bg-[#024ad8] inline-block" />
+                Other Ways to Reach Us
+              </h3>
+
+              {directChannels.map((ch, idx) => (
+                <div
+                  key={idx}
+                  className={`flex items-center gap-4 p-4 rounded-2xl border ${ch.bg} transition-all hover:shadow-md`}
+                >
+                  <span className={`shrink-0 ${ch.color}`}>{ch.icon}</span>
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{ch.label}</div>
+                    {ch.href ? (
+                      <a href={ch.href} className={`text-sm font-bold ${ch.color} hover:underline break-all`}>
+                        {ch.value}
+                      </a>
+                    ) : (
+                      <p className={`text-sm font-semibold ${ch.color}`}>{ch.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              {/* Amber note */}
+              <div className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50 border border-amber-200 mt-2">
+                <InfoIcon className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                <p className="text-xs text-amber-800 leading-relaxed font-medium">
+                  We can&rsquo;t diagnose individual machines. For hardware fixes, consult your device manufacturer&rsquo;s official support.
+                </p>
+              </div>
+            </div>
+
+            {/* Knowledge base CTA */}
+            <div
+              className="rounded-3xl overflow-hidden relative shadow-xl shadow-[#024ad8]/15 border border-[#024ad8]/20"
+              style={{ background: "linear-gradient(135deg, #024ad8 0%, #1e3a8a 60%, #0e1e5e 100%)" }}
+            >
+              {/* Decorative circles */}
+              <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/5" />
+              <div className="absolute -right-4 -bottom-8 w-28 h-28 rounded-full bg-cyan-400/10" />
+
+              <div className="relative z-10 p-7">
+                <div className="flex items-center gap-2 mb-4">
+                  <BookOpenIcon className="w-5 h-5 text-cyan-300" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-200">
+                    Still Looking for Help?
+                  </span>
+                </div>
+                <h3 className="text-xl font-extrabold text-white mb-2 leading-snug">
+                  Our Knowledge Base Has Answers
+                </h3>
+                <p className="text-blue-100 text-xs leading-relaxed mb-6">
+                  Browse step-by-step fix overviews and common driver symptom guides before reaching out.
+                </p>
+                <Link
+                  href="/knowledge-base"
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#024ad8] text-xs font-bold shadow-md hover:bg-blue-50 transition-all"
+                >
+                  Browse Knowledge Base
+                  <ArrowRightIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+
+        {/* ── FAQ strip ── */}
+        <section>
+          {/* Section label */}
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#024ad8]/10 border border-[#024ad8]/20 text-[#024ad8] text-xs font-bold uppercase tracking-wider mb-3">
+              <HelpCircleIcon className="w-3.5 h-3.5" />
+              FAQ
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+              Quick Answers
+            </h2>
+            <p className="mt-2 text-slate-500 text-sm max-w-sm mx-auto">
+              Common questions before reaching out.
             </p>
           </div>
-        </div>
 
-        {/* Contact / Suggestion Form (7 cols) */}
-        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-8 shadow-xs">
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Send Us a Message</h2>
-          <p className="text-slate-600 text-sm mb-6">
-            Suggest a hardware troubleshooting topic or ask our editorial team a question.
-          </p>
-
-          {submitted ? (
-            <div className="p-6 rounded-2xl bg-blue-50 border border-blue-200 text-center space-y-3">
-              <CheckCircleIcon className="w-10 h-10 text-emerald-600 mx-auto" />
-              <h3 className="text-lg font-bold text-slate-900">Thank You for Reaching Out!</h3>
-              <p className="text-sm text-slate-600">
-                Your message has been received. Our team will review your topic suggestion or query shortly.
-              </p>
-              <button
-                type="button"
-                onClick={() => setSubmitted(false)}
-                className="mt-3 px-4 py-2 rounded-xl bg-blue-600 text-xs font-bold text-white hover:bg-blue-700"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="group relative rounded-3xl bg-white border border-slate-200 hover:border-[#024ad8]/40 p-8 shadow-xs hover:shadow-2xl hover:shadow-[#024ad8]/10 transition-all duration-300 hover:-translate-y-1.5 overflow-hidden flex flex-col gap-4"
               >
-                Send another message
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Jane Doe"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white text-sm transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="jane@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white text-sm transition-colors"
-                  />
-                </div>
-              </div>
+                {/* Accent corner dot */}
+                <div className="absolute top-0 right-0 w-20 h-20 rounded-bl-full bg-[#024ad8]/5 group-hover:bg-[#024ad8]/10 transition-colors" />
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Subject / Hardware Topic
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder="e.g. Printer Spooler Guide for Windows 11"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white text-sm transition-colors"
-                />
+                <span className="text-3xl">{faq.emoji}</span>
+                <h3 className="text-base font-bold text-slate-900 group-hover:text-[#024ad8] transition-colors leading-snug">
+                  {faq.q}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
               </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Message / Feedback
-                </label>
-                <textarea
-                  rows={5}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Write your question, suggestion, or feedback here..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white text-sm transition-colors"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 font-bold text-white text-sm shadow-md shadow-blue-600/25 transition-all transform hover:-translate-y-0.5"
-              >
-                Send Message
-              </button>
-            </form>
-          )}
-        </div>
+            ))}
+          </div>
+        </section>
 
       </div>
-    </div>
+    </main>
   );
 }
