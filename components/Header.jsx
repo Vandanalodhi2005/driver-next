@@ -53,7 +53,13 @@ export default function Header() {
         }`}
       >
         {/* Top Notification / Trust Bar */}
-        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white text-xs py-1.5 px-4">
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white text-xs px-4 ${
+            scrolled
+              ? "max-h-0 py-0 opacity-0 pointer-events-none"
+              : "max-h-12 py-1.5 opacity-100"
+          }`}
+        >
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center justify-center bg-white/20 px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase">

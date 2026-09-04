@@ -24,6 +24,7 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   function validate() {
     const e = {};
@@ -31,8 +32,8 @@ export default function ContactForm() {
     if (!form.email.trim() || !/^[^@]+@[^@]+\.[^@]+$/.test(form.email))
       e.email = "Please enter a valid email address.";
     if (!form.subject) e.subject = "Please select a topic.";
-    if (!form.message.trim() || form.message.trim().length < 20)
-      e.message = "Message must be at least 20 characters.";
+    // if (!form.message.trim() || form.message.trim().length < 20)
+    //   e.message = "Message must be at least 20 characters.";
     return e;
   }
 
@@ -40,9 +41,10 @@ export default function ContactForm() {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+    if (serverError) setServerError("");
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -50,12 +52,26 @@ export default function ContactForm() {
       return;
     }
     setLoading(true);
-    // Simulate async submission
-    setTimeout(() => {
+    setServerError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setServerError(data.error || "Something went wrong. Please try again.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 1400);
+    }
   }
+
 
   if (submitted) {
     return (
@@ -180,6 +196,16 @@ export default function ContactForm() {
           </span>
         </div>
       </div>
+
+      {/* Server error banner */}
+      {serverError && (
+        <div className="flex items-start gap-2.5 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3">
+          <svg className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="text-xs text-rose-700 font-medium leading-relaxed">{serverError}</p>
+        </div>
+      )}
 
       {/* Submit */}
       <button

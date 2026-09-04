@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = {
@@ -40,7 +41,9 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );
 }
+
