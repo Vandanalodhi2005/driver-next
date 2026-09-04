@@ -1,11 +1,10 @@
 import React from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { siteConfig } from "@/lib/site-config";
-import { CheckCircleIcon } from "@/components/Icons";
 
 export const metadata = {
-  title: "Accessibility Statement",
-  description: "Driver Info Hub is dedicated to providing an accessible, readable digital experience for all users."
+  title: "Accessibility Statement | Driver Info Hub",
+  description:
+    "Driver Info Hub's commitment to providing an accessible and usable digital experience for all visitors.",
 };
 
 export default function AccessibilityPage() {
@@ -13,66 +12,161 @@ export default function AccessibilityPage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <Breadcrumbs items={[{ label: "Accessibility" }]} />
 
+      {/* Header */}
       <header className="border-b border-slate-200 pb-6">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
           Accessibility Statement
         </h1>
+
         <p className="text-slate-500 text-sm mt-2 font-medium">
-          Commitment to Universal Web Usability
+          Our commitment to digital accessibility for people with disabilities.
         </p>
       </header>
 
-      <div className="prose max-w-none space-y-6 text-slate-700 text-sm leading-relaxed">
+      {/* Introduction */}
+      <div className="rounded-2xl bg-blue-50/80 border border-blue-200 p-6">
+        <p className="text-sm text-slate-700 leading-relaxed font-medium">
+          At Driver Info Hub, we strive to make our website accessible and
+          usable for all visitors, regardless of technology or ability. Our
+          goal is to create an inclusive online environment that enables every
+          user to access information and services efficiently.
+        </p>
+      </div>
+
+      {/* Content */}
+      <div className="prose max-w-none space-y-8 text-slate-700 text-sm leading-relaxed">
+
+        {/* Accessibility Standards */}
         <section>
-          <h2 className="text-xl font-bold text-slate-900 mb-2">Our Commitment</h2>
+          <h2 className="text-xl font-bold text-slate-900 mb-3">
+            Accessibility Standards
+          </h2>
+
           <p>
-            {siteConfig.name} is committed to ensuring digital accessibility for people of all abilities. We continually improve the user experience for everyone and apply relevant accessibility standards (WCAG 2.1 AA guidelines).
+            We aim to conform to the Web Content Accessibility Guidelines
+            (WCAG) 2.1 Level AA wherever possible. These guidelines explain
+            how to make web content more accessible for people with a wide
+            range of disabilities, including visual, auditory, cognitive, and
+            motor impairments.
           </p>
         </section>
 
+        {/* Accessibility Features */}
         <section>
-          <h2 className="text-xl font-bold text-slate-900 mb-2">Accessibility Features Built In</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 not-prose mt-3">
-            <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-2.5 shadow-xs">
-              <CheckCircleIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-slate-900 font-bold block">High Contrast Typography</span>
-                <span className="text-xs text-slate-600">Crisp contrast ratios for clear legibility on all displays.</span>
-              </div>
-            </div>
+          <h2 className="text-xl font-bold text-slate-900 mb-3">
+            Accessibility Features
+          </h2>
 
-            <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-2.5 shadow-xs">
-              <CheckCircleIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-slate-900 font-bold block">Keyboard Navigation</span>
-                <span className="text-xs text-slate-600">Full keyboard focus indicators and logical tab index order.</span>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-2.5 shadow-xs">
-              <CheckCircleIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-slate-900 font-bold block">Semantic Hierarchy</span>
-                <span className="text-xs text-slate-600">Screen-reader friendly HTML5 landmarks and ARIA attributes.</span>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-2.5 shadow-xs">
-              <CheckCircleIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-slate-900 font-bold block">Responsive Scalability</span>
-                <span className="text-xs text-slate-600">Layout smoothly supports 200% text zoom without breaking.</span>
-              </div>
-            </div>
-          </div>
+          <ul className="list-disc pl-5 space-y-2 text-slate-600">
+            <li>Clear and consistent navigation throughout the site.</li>
+            <li>
+              Keyboard-accessible menus and interactive elements.
+            </li>
+            <li>
+              Alternative text for meaningful images.
+            </li>
+            <li>
+              Sufficient color contrast for readability.
+            </li>
+            <li>
+              Responsive layouts for various screen sizes.
+            </li>
+            <li>
+              Structured headings for screen reader support.
+            </li>
+          </ul>
         </section>
 
-        <section className="pt-4 border-t border-slate-200">
-          <h2 className="text-xl font-bold text-slate-900 mb-2">Feedback &amp; Accessibility Assistance</h2>
+        {/* Ongoing Improvements */}
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-3">
+            Ongoing Improvements
+          </h2>
+
           <p>
-            If you experience any accessibility barriers while using Driver Info Hub, please contact our team at <a href={`mailto:${siteConfig.company.email}`} className="text-blue-600 font-bold hover:underline">{siteConfig.company.email}</a> and we will work to address it promptly.
+            Accessibility is an ongoing effort. We regularly review our
+            website, test new features, and identify areas for improvement to
+            enhance usability for all visitors. We welcome feedback from users
+            regarding accessibility barriers they may encounter.
           </p>
         </section>
+
+        {/* Third-Party Content */}
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-3">
+            Third-Party Content
+          </h2>
+
+          <p>
+            While we strive to ensure accessibility across our website, some
+            third-party tools, plugins, or external content may not fully meet
+            accessibility standards. We encourage providers to improve
+            accessibility wherever possible.
+          </p>
+        </section>
+
+        {/* Feedback */}
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-3">
+            Feedback and Assistance
+          </h2>
+
+          <p>
+            If you experience any difficulty accessing content on this website
+            or require assistance, please contact our support team. We value
+            your feedback and will make reasonable efforts to address
+            accessibility concerns promptly.
+          </p>
+        </section>
+
+        {/* Contact */}
+        <section>
+          <h2 className="text-xl font-bold text-slate-900 mb-3">
+            Contact Us
+          </h2>
+
+          <p>
+            Email:{" "}
+            <a
+              href="mailto:support@driverinfohub.com"
+              className="text-blue-600 font-medium hover:underline"
+            >
+              support@driverinfohub.com
+            </a>
+          </p>
+
+          <p className="mt-2">
+            Website:{" "}
+            <a
+              href="https://www.driverinfohub.com"
+              className="text-blue-600 font-medium hover:underline"
+            >
+              www.driverinfohub.com
+            </a>
+          </p>
+
+          <p className="mt-3">
+            We are committed to responding to accessibility-related feedback
+            and inquiries in a timely manner.
+          </p>
+        </section>
+      </div>
+
+      {/* Related Policies */}
+      <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          className="text-blue-600 hover:text-blue-700 font-semibold text-sm"
+        >
+          Contact Us →
+        </a>
+
+        <a
+          href="/privacy"
+          className="text-blue-600 hover:text-blue-700 font-semibold text-sm"
+        >
+          Privacy Policy →
+        </a>
       </div>
     </div>
   );

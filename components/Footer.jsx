@@ -20,15 +20,15 @@ export default function Footer() {
           
           {/* Column 1: Brand Info & Description (4 cols on lg) */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-3 group inline-flex">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
-                <PrinterIcon className="w-6 h-6" />
+                      <Link href="/" className="flex items-center gap-2.5 group inline-flex">
+              <div className="w-8 h-8 rounded-xl bg-[#024ad8] flex items-center justify-center text-white shadow-md shadow-[#024ad8]/25 group-hover:scale-105 transition-transform duration-200">
+                <PrinterIcon className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xl font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
-                  Driver<span className="text-blue-600">Info</span>Hub
+                <span className="text-[17px] font-extrabold tracking-tight text-slate-900 group-hover:text-[#024ad8] transition-colors leading-none">
+                  Driver<span className="text-[#024ad8]">Info</span>Hub
                 </span>
-                <span className="block text-[10px] tracking-wider text-blue-700 uppercase font-bold -mt-1">
+                <span className="block text-[9px] tracking-widest text-[#024ad8]/80 uppercase font-bold -mt-0.5">
                   Educational Driver Guide
                 </span>
               </div>

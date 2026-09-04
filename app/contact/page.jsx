@@ -81,8 +81,7 @@ export default function ContactPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════
-          SPLIT HERO — image left, headline right (editorial look) 
-          
+          SPLIT HERO — image left, headline right (editorial look)   
       ══════════════════════════════════════════════════════════════ */}
       <section className="relative bg-[#024ad8] overflow-hidden min-h-[480px] lg:min-h-[560px]">
 
