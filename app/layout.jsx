@@ -30,6 +30,11 @@ export const metadata = {
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
+  icons: {
+    icon: "/favIcon.png",
+    shortcut: "/favIcon.png",
+    apple: "/favIcon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

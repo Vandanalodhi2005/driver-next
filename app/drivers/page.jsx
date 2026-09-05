@@ -428,7 +428,7 @@ export default function AllDriversPage() {
             
             {/* 1. Kernel-Mode */}
             <Link
-              href="/drivers"
+              href="/drivers/graphics"
               className="group p-5 rounded-xl bg-white border border-slate-200/90 shadow-[0_8px_25px_-8px_rgba(2,74,216,0.06)] hover:shadow-[0_15px_30px_-10px_rgba(2,74,216,0.18)] hover:border-[#024ad8]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -444,14 +444,15 @@ export default function AllDriversPage() {
                   Privileged execution. Direct hardware access with system-wide responsibility. Essential for storage and GPU, but risky.
                 </p>
               </div>
-              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8]">
-                Learn Architecture Details
+              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8] flex items-center justify-between">
+                <span>Learn Architecture Details</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
 
             {/* 2. User-Mode */}
             <Link
-              href="/drivers"
+              href="/drivers/printers"
               className="group p-5 rounded-xl bg-white border border-slate-200/90 shadow-[0_8px_25px_-8px_rgba(2,74,216,0.06)] hover:shadow-[0_15px_30px_-10px_rgba(2,74,216,0.18)] hover:border-[#024ad8]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -467,14 +468,15 @@ export default function AllDriversPage() {
                   Safe isolation. Run in restricted user space. If they crash, only the driver stops, not your system.
                 </p>
               </div>
-              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8]">
-                Learn Architecture Details
+              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8] flex items-center justify-between">
+                <span>Learn Architecture Details</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
 
             {/* 3. Chipset */}
             <Link
-              href="/drivers"
+              href="/drivers/usb"
               className="group p-5 rounded-xl bg-white border border-slate-200/90 shadow-[0_8px_25px_-8px_rgba(2,74,216,0.06)] hover:shadow-[0_15px_30px_-10px_rgba(2,74,216,0.18)] hover:border-[#024ad8]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -490,14 +492,15 @@ export default function AllDriversPage() {
                   System foundation. Manage your motherboard&apos;s chipset. Install these first — everything else depends on them.
                 </p>
               </div>
-              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8]">
-                Learn Architecture Details
+              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8] flex items-center justify-between">
+                <span>Learn Architecture Details</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
 
             {/* 4. Storage */}
             <Link
-              href="/drivers"
+              href="/knowledge-base"
               className="group p-5 rounded-xl bg-white border border-slate-200/90 shadow-[0_8px_25px_-8px_rgba(2,74,216,0.06)] hover:shadow-[0_15px_30px_-10px_rgba(2,74,216,0.18)] hover:border-[#024ad8]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -513,14 +516,15 @@ export default function AllDriversPage() {
                   Data management. Handle SSDs, HDDs, and NVMe. Critical for performance and reliability of your storage devices.
                 </p>
               </div>
-              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8]">
-                Learn Architecture Details
+              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8] flex items-center justify-between">
+                <span>Learn Architecture Details</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
 
             {/* 5. Input Devices */}
             <Link
-              href="/drivers"
+              href="/drivers/bluetooth"
               className="group p-5 rounded-xl bg-white border border-slate-200/90 shadow-[0_8px_25px_-8px_rgba(2,74,216,0.06)] hover:shadow-[0_15px_30px_-10px_rgba(2,74,216,0.18)] hover:border-[#024ad8]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -536,14 +540,15 @@ export default function AllDriversPage() {
                   Every click and keystroke. Keyboards, mice, touchpads, game controllers. Usually work with generic drivers.
                 </p>
               </div>
-              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8]">
-                Learn Architecture Details
+              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8] flex items-center justify-between">
+                <span>Learn Architecture Details</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
 
             {/* 6. Virtual Devices */}
             <Link
-              href="/drivers"
+              href="/drivers/network"
               className="group p-5 rounded-xl bg-white border border-slate-200/90 shadow-[0_8px_25px_-8px_rgba(2,74,216,0.06)] hover:shadow-[0_15px_30px_-10px_rgba(2,74,216,0.18)] hover:border-[#024ad8]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -559,8 +564,9 @@ export default function AllDriversPage() {
                   Software hardware. VMs, VPNs, and emulators use virtual drivers that pretend to be real hardware.
                 </p>
               </div>
-              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8]">
-                Learn Architecture Details
+              <div className="mt-3.5 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-[#024ad8] flex items-center justify-between">
+                <span>Learn Architecture Details</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
 
